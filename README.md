@@ -1,8 +1,6 @@
-/// | Latin | Greek |
-/// |-------|-------|
-/// | a     | alpha |
-/// | b     | beta  |
-/// | c     | gamma |
+---
+description: This description will override the default.
+---
 
 # sandbox
 
