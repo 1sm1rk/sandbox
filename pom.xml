@@ -40,6 +40,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- Sonar scanner-->
+		<dependency>
+    		<groupId>org.sonarsource.scanner.maven</groupId>
+    		<artifactId>sonar-maven-plugin</artifactId>
+    		<version>5.0.0.4389</version>
+		</dependency>
 	</dependencies>
 
 	<build>
