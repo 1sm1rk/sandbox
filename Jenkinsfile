@@ -18,10 +18,14 @@ pipeline {
             }
         }
         stage('tag image for github') {
-            sh 'docker tag $IMAGE_NAME:$IMAGE_VERSION ghcr.io/$IMAGE_NAME:$IMAGE_VERSION'
+            steps {
+                sh 'docker tag $IMAGE_NAME:$IMAGE_VERSION ghcr.io/$IMAGE_NAME:$IMAGE_VERSION'
+            }
         }
         stage('push image to github') {
-            sh 'docker push ghcr.io/$IMAGE_NAME:$IMAGE_VERSION'
+            steps {
+                sh 'docker push ghcr.io/$IMAGE_NAME:$IMAGE_VERSION'
+            }
         }
     }
     post {
