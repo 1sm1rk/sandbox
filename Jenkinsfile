@@ -3,25 +3,28 @@ pipeline {
     environment {
         GITHUB_TOKEN=credentials('github_push_token')
         IMAGE_NAME='1sm1rk/sandbox'
-        IMAGE_VERSION='0.0.1'
+        IMAGE_VERSION='0.0.3'
     }
     stages {
-       stage('Docker Build') {
+        stage('Docker Build') {
            agent any
            steps {
                sh 'docker build -t $IMAGE_NAME:$IMAGE_VERSION .'
            }
-       }
-        stage('login to GHCR') {
-            steps {
-                sh 'echo $GITHUB_TOKEN_PSW | docker login -u $GITHUB_TOKEN_USR --password-stdin ghrc.io'
-            }
         }
+        
         stage('tag image for github') {
             steps {
                 sh 'docker tag $IMAGE_NAME:$IMAGE_VERSION ghcr.io/$IMAGE_NAME:$IMAGE_VERSION'
             }
         }
+        
+        stage('login to GHCR') {
+            steps {
+                sh 'echo $GITHUB_TOKEN_PSW | docker login -u $GITHUB_TOKEN_USR --password-stdin ghcr.io'
+            }
+        }
+        
         stage('push image to github') {
             steps {
                 sh 'docker push ghcr.io/$IMAGE_NAME:$IMAGE_VERSION'
