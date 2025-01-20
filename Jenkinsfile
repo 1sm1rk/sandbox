@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         GITHUB_TOKEN=credentials('github_push_token')
+        SONAR_ACCOUNT=credentials('sonar_account')
         IMAGE_NAME='1sm1rk/sandbox'
         IMAGE_VERSION='0.0.3'
     }
@@ -9,7 +10,7 @@ pipeline {
         stage('Docker Build') {
            agent any
            steps {
-               sh 'docker build -t $IMAGE_NAME:$IMAGE_VERSION .'
+               sh 'docker build -t $IMAGE_NAME:$IMAGE_VERSION --build-arg sonarurl=$SONAR_ACCOUNT_USR --build-arg sonartoken=$SONAR_ACCOUNT_PSW .'
            }
         }
         
