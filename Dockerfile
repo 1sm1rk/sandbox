@@ -9,7 +9,7 @@ WORKDIR /app
 # copy files
 COPY pom.xml .
 COPY src ./src
-RUN mvn clean verify package sonar:sonar -Dsonar.projectKey=1sm1rk_sandbox -Dsonar.projectName='1sm1rk_sandbox' -Dsonar.host.url=${sonarurl} -Dsonar.token=S{sonartoken}
+RUN mvn clean verify package sonar:sonar -Dsonar.projectKey=1sm1rk_sandbox -Dsonar.projectName='1sm1rk_sandbox' -Dsonar.host.url=${sonarurl} -Dsonar.token=${sonartoken}
 
 # build concrete image
 FROM eclipse-temurin:21
