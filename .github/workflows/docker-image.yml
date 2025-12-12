@@ -26,6 +26,11 @@ jobs:
        registry: ghcr.io
        username: ${{ github.actor }}
        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Docker meta
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: name/app
     #- name: Build the Docker image
     #  run: docker build . --file Dockerfile --tag moonrat-sandbox:$(date +%s)
     #- name: login to ghcr.io
