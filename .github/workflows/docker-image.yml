@@ -9,7 +9,7 @@ on:
 env:
     REGISTRY: ghcr.io
     IMAGE_NAME: ${{ github.repository }}
-    
+    TOKEN: ${{ secrets.PUSH_TOKEN }}
 jobs:
 
   build:
@@ -28,7 +28,7 @@ jobs:
       with:
        registry: ghcr.io
        username: ${{ github.actor }}
-       password: ${{ secrets.GITHUB_TOKEN }}
+       password: ${{ env.TOKEN }}
     - name: Docker meta
       id: meta
       uses: docker/metadata-action@v5
