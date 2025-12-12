@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: sandbox 
-        image: docker pull ghcr.io/1sm1rk/sandbox:main
+        image: ghcr.io/1sm1rk/sandbox:main
         ports:
         - containerPort: 8080
 ---
