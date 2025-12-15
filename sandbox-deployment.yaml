@@ -34,7 +34,7 @@ spec:
   selector:
     app: sandbox
 ---
-# add http route 
+# add http route to sandbox
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
